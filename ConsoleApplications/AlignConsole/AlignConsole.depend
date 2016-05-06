@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1461162484 source:/home/ac1054/Documents/CB/AlignConsole/dubins.cpp
+	"dubins.h"
+	<cmath>
+	<cassert>
+	<iostream>
+	<algorithm>
+	<string>
+
+1459010516 /home/ac1054/Documents/CB/AlignConsole/dubins.h
+	<string>
+
+1461163090 source:/home/ac1054/Documents/CB/AlignConsole/main.cpp
+	<iostream>
+	"dubins.h"
+	"getSolution.h"
+
+1461163102 /home/ac1054/Documents/CB/AlignConsole/getSolution.h
+
