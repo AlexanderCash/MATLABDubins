@@ -123,7 +123,8 @@ void dubins_RSL( double alpha, double beta, double d, double* outputs );
 void dubins_LRL( double alpha, double beta, double d, double* outputs );
 void dubins_RLR( double alpha, double beta, double d, double* outputs );
 
-
+/* Added by Alex Cash */
+/* Copies of the above functions designed to handle returning of all 6 paths rather than just one */
 DubinsPath bestDubins (double q0[3], double q1[3], double r, double stepSize);
 void allDubins (DubinsPath *x, double q0[3], double q1[3], double r, double stepSize);
 int dubins_init_all(DubinsPath *x, double q0[3], double q1[3], double rho);

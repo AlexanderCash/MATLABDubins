@@ -18,6 +18,9 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
+// Extended by Alex Cash 2016
+// Comments will indicate where additions have been made by Alex Cash
 #define _USE_MATH_DEFINES
 
 #include "dubins.h"
@@ -64,6 +67,13 @@ const int DIRDATA[][3] = {
     outputs[2]  = q;
 
 /* Added by Alex Cash */
+/* If we only want to get one Dubins path back */
+/* Inputs:  Start location
+            End location
+            Min. turn radius
+            Resolution for path readings
+ */
+/* Output: Dubinspath structure defined in dubins.h*/
 DubinsPath bestDubins (double q0[3], double q1[3], double r, double stepSize) {
 
     DubinsPath path;
@@ -73,6 +83,13 @@ DubinsPath bestDubins (double q0[3], double q1[3], double r, double stepSize) {
 }
 
 /* Added by Alex Cash */
+/* If we want all types returned. We update the array of dubins paths called x */
+/* Inputs:  Start location
+            End location
+            Min. turn radius
+            Resolution for path readings
+ */
+/* Output: Array of Dubinspath structures defined in dubins.h*/
 void allDubins (DubinsPath *x, double q0[3], double q1[3], double r, double stepSize) {
 
     dubins_init_all(x, q0, q1, r);
@@ -119,8 +136,17 @@ int dubins_init( double q0[3], double q1[3], double rho, DubinsPath* path )
 }
 
 /* Added by Alex Cash */
+/* Extended to initialise all of the qi fields in the path structures */
+/* Inputs:  Start location
+            End location
+            Min. turn radius
+            Resolution for path readings
+            Array of Dubinspath structures defined in dubins.h
+ */
+
 int dubins_init_all(DubinsPath *x, double q0[3], double q1[3], double rho)
 {
+    // Calculate the normalise positions
     double dx = q1[0] - q0[0];
     double dy = q1[1] - q0[1];
     double D = sqrt( dx * dx + dy * dy );
@@ -129,13 +155,12 @@ int dubins_init_all(DubinsPath *x, double q0[3], double q1[3], double rho)
         return EDUBBADRHO;
     }
     if( (fabs(dx) < EPSILON) && (fabs(dy) < EPSILON) ) {
-        // if the configurations are colocated, theta has no clear definition
-        // TODO test if you can get away with letting theta = 0
         return EDUBCOCONFIGS;
     }
     double theta = mod2pi(atan2( dy, dx ));
     double alpha = mod2pi(q0[2] - theta);
     double beta  = mod2pi(q1[2] - theta);
+    // Loop through all paths to load in initial location configs
     for( int i = 0; i < 3; i ++ ) {
         x[0].qi[i] = q0[i];
         x[1].qi[i] = q0[i];
@@ -144,6 +169,7 @@ int dubins_init_all(DubinsPath *x, double q0[3], double q1[3], double rho)
         x[4].qi[i] = q0[i];
         x[5].qi[i] = q0[i];
     }
+    // Call the actual calculation and processing function
     return dubins_init_normalised_all(x, alpha, beta, d, rho);
 }
 
@@ -272,7 +298,7 @@ int dubins_init_normalised( double alpha,
     // Extract the best cost path
     int bestType = 0;
     double minCost = results[0][3];
-    for(int i = 1; i < 6; i++)
+    for(int i = 1; i < 6; i++) // Updated by Alex Cash to assess all paths, including LSL paths
     {
         //std::cout << i << " " << results[i][3] << std::endl;
         if( results[i][3] < minCost ) {
@@ -292,6 +318,12 @@ int dubins_init_normalised( double alpha,
 }
 
 /* Added by Alex Cash */
+/* Function to process all paths as opposed to just the shortest */
+/* Inputs:  Normalised path parameters
+            Array of Dubinspath structures defined in dubins.h
+ */
+/* Output: return 0 for success */
+
 int dubins_init_normalised_all(DubinsPath *x,
                             double alpha,
                             double beta,
@@ -299,6 +331,7 @@ int dubins_init_normalised_all(DubinsPath *x,
                             double rho)
 {
 
+    // Fill all path rho fields
     x[0].rho = rho;
     x[1].rho = rho;
     x[2].rho = rho;
@@ -322,9 +355,10 @@ int dubins_init_normalised_all(DubinsPath *x,
     dubins_RLR( alpha, beta, d, results[RLR] );
     dubins_LRL( alpha, beta, d, results[LRL] );
 
+    // Loop through all path types
     for (int i = 0; i < 6; i++) {
         x[i].type = i; //Set the type for the path
-        for (int j = 0; j < 3; j++) {
+        for (int j = 0; j < 3; j++) { // Loop through each segment of each path
              x[i].param[j] = results[i][j]; // Store the results in the param variables
         }
     }
@@ -332,6 +366,8 @@ int dubins_init_normalised_all(DubinsPath *x,
 }
 
 /* Added by Alex Cash */
+/* Path to just return a string of the path type based on input number */
+/* Inputs: path type integer */
 string getPathType(int pathType) {
     string outStr;
     switch (pathType) {
