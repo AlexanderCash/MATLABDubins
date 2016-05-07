@@ -121,7 +121,12 @@ annotation('textarrow',arrowX,arrowY,'String',arrowString)
 %% Create legend
 legend('Air relative','Groud relative')
 hold
-
+fprintf('\n\nOrigin(%.01f, %.01f, %.02f)\n',dubinsPath(1,1),dubinsPath(2,1),q0(3));
+fprintf('Airpath End(%.01f, %.01f, %.02f)\n',dubinsPath(1,end),dubinsPath(2,end),q1(3));
+fprintf('Groundpath End(%.01f, %.01f, %.02f)\n',dubinsPath(5,end),dubinsPath(2,end),q1(3));
+fprintf('Flight duration: %.02f\n',dubinsPath(4,end));
+fprintf('x offset should be: %.02f\n',dubinsPath(4,end)*windVector);
+fprintf('\tx actual offset: %.02f\n\n',dubinsPath(5,end)-dubinsPath(1,end));
 
 end
 
