@@ -59,18 +59,23 @@ void calculatePaths (uint32_t radius, double q0[3], double d[3], double stepsize
     cout << "\n File opened...";
     if (elapsedTime >= 30) {
         cout << "\nelapsedTime too high lol ";
-        myfile << " ERROR calculating path n\n\n";
+        myfile << " ERROR calculating path for values: n\n\n";
+        myfile << "Start: \t\t" << q0[0] << ", " << q0[1] << ", " << q0[2] << "\n";
+        myfile << "End: \t\t" << d[0] << ", " << d[1] << ", " << d[2] << "\n";
+        myfile << "Wspd: \t\t" << windSpeed << "\n";
+
     } else {
         cout << "\nPrinting to file ";
         myfile << "Start: \t\t" << q0[0] << ", " << q0[1] << ", " << q0[2] << "\n";
         cout << "\nPrinted start ";
         myfile << "End: \t\t" << d[0] << ", " << d[1] << ", " << d[2] << "\n";
         cout << "\nPrinted end ";
-        myfile << "Wspd: \t\t"; << windSpeed << "\n";
+        myfile << "Wspd: \t\t" << windSpeed << "\n";
         myfile << "Vt:  \t\t" << vt[0] << ", " << vt[1] << ", " << vt[2] << "\n";
         cout << "\nPrinted vt ";
+        myfile << "Path type: \t" << getPathType(selectedPath) << "\n";
         //typeOfPath = getPathType(selectedPath);
-        myfile << "Path type: \t" << selectedPath << "\n";
+        //myfile << "Path type: \t" << selectedPath << "\n";
         cout << "\nPrinted path type";
         myfile << "Section 1: \t" << pathToVTArr[selectedPath].param[0]*radius << "\n";
         myfile << "Section 2: \t" << pathToVTArr[selectedPath].param[1]*radius << "\n";

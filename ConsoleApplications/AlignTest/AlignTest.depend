@@ -23,3 +23,33 @@
 1461173262 source:/home/ac1054/Documents/CB/AlignTest/runTesting.cpp
 	"calculatePaths.h"
 
+1462586714 source:/home/ac1054/Documents/MATLABDubins/ConsoleApplications/AlignTest/calculatePaths.cpp
+	"calculatePaths.h"
+	"dubins.h"
+	<iostream>
+	<fstream>
+	<cmath>
+
+1462586658 /home/ac1054/Documents/MATLABDubins/ConsoleApplications/AlignTest/calculatePaths.h
+	<stdint.h>
+
+1462586658 /home/ac1054/Documents/MATLABDubins/ConsoleApplications/AlignTest/dubins.h
+	<string>
+
+1462586658 source:/home/ac1054/Documents/MATLABDubins/ConsoleApplications/AlignTest/dubins.cpp
+	"dubins.h"
+	<cmath>
+	<cassert>
+	<iostream>
+	<algorithm>
+	<string>
+
+1462586658 source:/home/ac1054/Documents/MATLABDubins/ConsoleApplications/AlignTest/main.cpp
+	"runTesting.h"
+	<iostream>
+
+1462586658 /home/ac1054/Documents/MATLABDubins/ConsoleApplications/AlignTest/runTesting.h
+
+1462586736 source:/home/ac1054/Documents/MATLABDubins/ConsoleApplications/AlignTest/runTesting.cpp
+	"calculatePaths.h"
+

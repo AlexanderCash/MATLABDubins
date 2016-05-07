@@ -8,7 +8,7 @@ void runTesting(void)
     // Variables
     double q0[3] = {0, 0, 0};
     double d[3] = {0, 0, 0};
-    int windspeed = 0;
+    //int windspeed = 0;
 
 /**
   * Windspeed varies from -9 to 9 at intervals of 1
