@@ -390,7 +390,7 @@ string getPathType(int pathType) {
             outStr = "LRL";
             break;
         default:
-            outStr = "POO";
+            outStr = "NUL";
             break;
     }
     return outStr;

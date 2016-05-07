@@ -40,19 +40,4 @@ void runTesting(void)
             }
         }
     }
-
-
-//    for (int startO = 0; startO < 8; startO++) {
-//        q0[2] = startO*0.785;
-//        for (int endO = 0; endO < 8; endO++) {
-//            d[2] = endO*0.785;
-//            for (int endX = 0; endX < 8; endX++) {
-//                d[0] = endX*10;
-//                for (int endY = 0; endY < 8; endY++) {
-//                    d[1] = endY*10;
-//                    calculatePaths (25, q0, d, 0.1, 18, -9);
-//                }
-//            }
-//        }
-//    }
 }

@@ -17,3 +17,20 @@
 
 1461163102 /home/ac1054/Documents/CB/AlignConsole/getSolution.h
 
+1462587106 source:c:\code\matlabdubins\consoleapplications\alignconsole\getsolution.cpp
+	"getSolution.h"
+	"dubins.h"
+	<iostream>
+	<cmath>
+	<stdint.h>
+
+1461166702 c:\code\matlabdubins\consoleapplications\alignconsole\getsolution.h
+
+1462584368 c:\code\matlabdubins\consoleapplications\alignconsole\dubins.h
+	<string>
+
+1461166690 source:c:\code\matlabdubins\consoleapplications\alignconsole\main.cpp
+	<iostream>
+	"dubins.h"
+	"getSolution.h"
+

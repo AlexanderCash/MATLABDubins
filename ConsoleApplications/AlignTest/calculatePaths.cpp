@@ -37,7 +37,7 @@ void calculatePaths (uint32_t radius, double q0[3], double d[3], double stepsize
         for (int i = 0; i < 6; i++) {
             cout << "\nEntering inner Loop: " << i;
             Ta = ((pathToVTArr[i].param[0] + pathToVTArr[i].param[1] + pathToVTArr[i].param[2])*radius)/speed;
-            if (abs(Ta - Tvt) < 0.05) { //if we can consider the problem solved
+            if (abs(Ta - Tvt) < 0.1) { //if we can consider the problem solved
                 cout << "\nCondition satisfied " << i;
                 solutionFound = true;
                 if (abs(Ta - Tvt) < optimumPathSoFar) {
@@ -66,7 +66,8 @@ void calculatePaths (uint32_t radius, double q0[3], double d[3], double stepsize
         cout << "\nPrinted start ";
         myfile << "End: \t\t" << d[0] << ", " << d[1] << ", " << d[2] << "\n";
         cout << "\nPrinted end ";
-        myfile << "Vt:  \t\t\t" << vt[0] << ", " << vt[1] << ", " << vt[2] << "\n";
+        myfile << "Wspd: \t\t"; << windSpeed << "\n";
+        myfile << "Vt:  \t\t" << vt[0] << ", " << vt[1] << ", " << vt[2] << "\n";
         cout << "\nPrinted vt ";
         //typeOfPath = getPathType(selectedPath);
         myfile << "Path type: \t" << selectedPath << "\n";
@@ -74,7 +75,7 @@ void calculatePaths (uint32_t radius, double q0[3], double d[3], double stepsize
         myfile << "Section 1: \t" << pathToVTArr[selectedPath].param[0]*radius << "\n";
         myfile << "Section 2: \t" << pathToVTArr[selectedPath].param[1]*radius << "\n";
         myfile << "Section 3: \t" << pathToVTArr[selectedPath].param[2]*radius << "\n";
-        myfile << "Total: \t" << (pathToVTArr[selectedPath].param[0] + pathToVTArr[selectedPath].param[0] + pathToVTArr[selectedPath].param[0])*radius << "\n\n\n";
+        myfile << "Total: \t\t" << (pathToVTArr[selectedPath].param[0] + pathToVTArr[selectedPath].param[0] + pathToVTArr[selectedPath].param[0])*radius << "\n\n\n";
         cout << "\nPrinted total... ";
     }
 }

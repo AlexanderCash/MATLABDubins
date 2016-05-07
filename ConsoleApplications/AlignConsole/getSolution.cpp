@@ -94,16 +94,15 @@ void getSolution (void) {
         elapsedTime = elapsedTime + 0.1; // Increment calculation time value
         vt[0] = vt[0] + 0.1*(-windSpeed); // Update the x-position of the virtual target
         Tvt = elapsedTime; // Tvt update
-        allDubins(pathToVTArr, q0, vt, radius, 0.1); //get all types of dubins path
+        allDubins(pathToVTArr, q0, vt, radius, 0.1); // Get all types of dubins path
         for (int i = 0; i < 6; i++) { // Loop through path types
             Ta = ((pathToVTArr[i].param[0] + pathToVTArr[i].param[1] + pathToVTArr[i].param[2])*radius)/speed; // Calculate new Ta
-            if (abs(Ta - Tvt) < 0.1) { //if we can consider the problem solved i.e. Ta and Tvt are within 0.1 second of one another
+            if (abs(Ta - Tvt) < 0.1) { // If we can consider the problem solved i.e. Ta and Tvt are within 0.1 second of one another
                 solutionFound = true;
                 if (abs(Ta - Tvt) < optimumPathSoFar) { // If this path is the best so far
                     optimumPathSoFar = abs(Ta - Tvt); // Update our best value so far
                     selectedPath = pathToVTArr[i].type; // Update selected path value
                 }
-
             }
         }
         if (solutionFound) goto solved; // if we have a solution from one of the 6 paths, no need to keep searching
