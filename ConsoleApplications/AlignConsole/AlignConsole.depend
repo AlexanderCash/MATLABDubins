@@ -34,3 +34,11 @@
 	"dubins.h"
 	"getSolution.h"
 
+1462587238 source:c:\code\matlabdubins\consoleapplications\alignconsole\dubins.cpp
+	"dubins.h"
+	<cmath>
+	<cassert>
+	<iostream>
+	<algorithm>
+	<string>
+

@@ -23,17 +23,17 @@ void runTesting(void)
     // Constants
     uint32_t speed = 18; //18 m/s for this UAV
     uint32_t r = 25; //Radius
-    double stepsize = 0.1; //This is constant
+    double stepsize = 0.1; //This is constantnd a
 
     for (int dx = 0; dx < 91; dx += 15) {
         for (int dy = 0; dy < 91; dy += 15) {
             for (int wspd = -9; wspd < 10; wspd++) {
-                for (int dO = 0; dO < 8; dO++) {
-                    for (int qO = 0; qO < 8; qO++) {
+                for (int dOrient = 0; dOrient < 8; dOrient++) {
+                    for (int qOrient = 0; qOrient < 8; qOrient++) {
                         d[0] = dx;
                         d[1] = dy;
-                        d[2] = dO;
-                        q0[2] = qO;
+                        d[2] = dOrient;
+                        q0[2] = qOrient;
                         calculatePaths (r, q0, d, stepsize, speed, wspd);
                     }
                 }
